@@ -1,3 +1,6 @@
+// Copyright 2020-2021 IOTA Stiftung
+// SPDX-License-Identifier: Apache-2.0
+
 /// The main crate result type derived from the `anyhow::Result` type.
 pub type Result<T, E = Error> = anyhow::Result<T, E>;
 

@@ -1,3 +1,6 @@
+// Copyright 2020-2021 IOTA Stiftung
+// SPDX-License-Identifier: Apache-2.0
+
 use core::convert::TryInto as _;
 use did_doc::{Error, Result, SignatureData, SignatureSuite};
 use ed25519_zebra::{Signature, SigningKey, VerificationKey, VerificationKeyBytes};

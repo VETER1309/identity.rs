@@ -1,3 +1,6 @@
+// Copyright 2020-2021 IOTA Stiftung
+// SPDX-License-Identifier: Apache-2.0
+
 use core::fmt::{Display, Error as FmtError, Formatter, Result as FmtResult};
 use did_doc::{Document, MethodQuery, MethodType, MethodWrap, MethodWriter, SignatureOptions};
 use serde::Serialize;
