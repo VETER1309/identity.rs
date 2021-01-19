@@ -1,5 +1,5 @@
 use core::convert::TryInto as _;
-use did_doc::{Error, Method, Result, Sign, SignatureData, SuiteName, Verify};
+use did_doc::{Error, MethodType, Result, Sign, SignatureData, SuiteName, Verify};
 use ed25519_zebra::{Signature, SigningKey, VerificationKey, VerificationKeyBytes};
 use rand::rngs::OsRng;
 use serde::Serialize;
@@ -89,12 +89,13 @@ impl Sign for JcsEd25519Signature2020 {
 }
 
 impl Verify for JcsEd25519Signature2020 {
-    fn verify<T, U>(&self, data: &T, signature: &SignatureData, method: &Method<U>) -> Result<()>
+    const METHODS: &'static [MethodType] = &[MethodType::JcsEd25519Key2020, MethodType::Ed25519VerificationKey2018];
+
+    fn verify<T>(&self, data: &T, signature: &SignatureData, public: &[u8]) -> Result<()>
     where
         T: Serialize,
-        U: Serialize,
     {
-        Self::verify_data(data, signature, &method.key_data().try_decode()?)
+        Self::verify_data(data, signature, public)
     }
 }
 
